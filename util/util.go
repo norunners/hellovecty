@@ -1,3 +1,4 @@
+// Package util provides common static behavior.
 package util
 
 // Must panics on errors.

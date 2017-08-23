@@ -1,3 +1,4 @@
+// Package app contains the front end application.
 package app
 
 import (
@@ -10,16 +11,17 @@ import (
 	"strconv"
 )
 
-// App is simple adding calculator application.
+// App is a trivial addition calculator app.
 type App struct {
 	vecty.Core
-	dao       *dao.Dao
+	dao dao.Dao
+
 	a, b, sum int
 	err       error
 }
 
 // New creates an app with a given dao.
-func New(dao *dao.Dao) *App {
+func New(dao dao.Dao) *App {
 	return &App{dao: dao}
 }
 

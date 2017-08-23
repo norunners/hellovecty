@@ -1,3 +1,4 @@
+// Package service provides a rpc compatible service.
 package service
 
 import (
@@ -5,12 +6,12 @@ import (
 	"github.com/norunners/hellovecty/api"
 )
 
-// Service satisfies the api.
+// Service satisfies the service api.
 // NOTE: Exported to be registered for rpc.
 type Service struct {
 }
 
-// New creats a service.
+// New creates a service.
 func New() api.Service {
 	return &Service{}
 }

@@ -1,3 +1,4 @@
+// Package main initializes the client.
 package main
 
 import (
@@ -6,14 +7,14 @@ import (
 	"github.com/norunners/hellovecty/app"
 	"github.com/norunners/hellovecty/dao"
 	"github.com/norunners/hellovecty/util"
-	"net/rpc/jsonrpc"
+	"net/rpc"
 )
 
-// main sets up the application and hands it to vecty to render.
+// main sets up the client and application and hands it over to vecty for rendering.
 func main() {
 	conn, err := websocket.Dial("ws://localhost:1234/ws-rpc")
 	util.Must(err)
-	client := jsonrpc.NewClient(conn)
+	client := rpc.NewClient(conn)
 
 	dao := dao.New(client)
 	app := app.New(dao)

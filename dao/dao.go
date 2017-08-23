@@ -1,3 +1,4 @@
+// Package dao provides a data abstraction object for client calls.
 package dao
 
 import (
@@ -5,18 +6,23 @@ import (
 	"net/rpc"
 )
 
-// Dao abstracts away the rpc client details.
-type Dao struct {
+// Dao defines add behavior.
+type Dao interface {
+	Add(a, b int) (int, error)
+}
+
+// dao satisfies dao with an rpc client.
+type dao struct {
 	client *rpc.Client
 }
 
-// New creats a Dao from a given rpc client.
-func New(client *rpc.Client) *Dao {
-	return &Dao{client: client}
+// New creates a dao from a given rpc client.
+func New(client *rpc.Client) Dao {
+	return &dao{client: client}
 }
 
 // Add calls the service and returns the result.
-func (dao *Dao) Add(a, b int) (int, error) {
+func (dao *dao) Add(a, b int) (int, error) {
 	in := &api.AddIn{A: a, B: b}
 	out := &api.AddOut{}
 	var err error
