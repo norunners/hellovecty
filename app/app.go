@@ -30,20 +30,26 @@ func (app *App) Render() *vecty.HTML {
 	return elem.Body(
 		elem.Div(
 			elem.Input(
-				prop.Type(prop.TypeText),
-				event.Change(app.onChangeA),
+				vecty.Markup(
+					prop.Type(prop.TypeText),
+					event.Change(app.onChangeA),
+				),
 			),
 		),
 		elem.Div(
 			elem.Input(
-				prop.Type(prop.TypeText),
-				event.Change(app.onChangeB),
+				vecty.Markup(
+					prop.Type(prop.TypeText),
+					event.Change(app.onChangeB),
+				),
 			),
 		),
 		elem.Div(
 			elem.Button(
 				vecty.Text("Add"),
-				event.Click(app.onClick).PreventDefault(),
+				vecty.Markup(
+					event.Click(app.onClick).PreventDefault(),
+				),
 			),
 		),
 		elem.Div(
